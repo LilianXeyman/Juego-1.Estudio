@@ -75,6 +75,9 @@ public class Player : MonoBehaviour
     bool estaJugando = true;
     public Transform destinoFinal;
 
+    /*[SerializeField]
+    Rigidbody rb;*/
+
     void Start()
     { 
         popUp.SetActive(false);
@@ -82,20 +85,23 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (estaJugando==true)
-        { 
-           movimientoX = Input.GetAxis("Horizontal") * Time.deltaTime * velJugador;
-           movimientoZ = Input.GetAxis("Vertical") * Time.deltaTime * velJugador;
-           transform.Translate(movimientoX, movimientoY, movimientoZ); //Tienes que poner esto para que se realice la transformacion en el espacio
-              if (Input.GetMouseButtonDown(0))
-              {
-              transform.Rotate(0, -90, 0);
-              }
-              if (Input.GetMouseButtonDown(1))
-              {
-              transform.Rotate(0, 90, 0);
-              }
-       
+        if (estaJugando == true)
+        {
+            movimientoX = Input.GetAxis("Horizontal") * Time.deltaTime * velJugador;
+            movimientoZ = Input.GetAxis("Vertical") * Time.deltaTime * velJugador;
+            transform.Translate(movimientoX, movimientoY, movimientoZ); //Tienes que poner esto para que se realice la transformacion en el espacio
+            if (Input.GetMouseButtonDown(0))
+            {
+                transform.Rotate(0, -90, 0);
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                transform.Rotate(0, 90, 0);
+            }
+            /*if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(transform.up*5f,ForceMode.Impulse);
+            }*/ //Salto
            tiempo = tiempo + Time.deltaTime;
            minutos = Mathf.Floor((tiempo%3600)/60);
            segundos = Mathf.Floor(tiempo%60);
